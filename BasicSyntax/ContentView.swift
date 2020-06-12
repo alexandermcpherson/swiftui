@@ -11,7 +11,7 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         VStack(spacing: 20) {
-            Text("GeomtryReader").font(.largeTitle)
+            Text("GeometryReader").font(.largeTitle)
             Text("Min Mid Max").foregroundColor(.gray)
             Text("You can also get the minimum (min), middle (mid), and maximum (max) X and Y coordinate from the geometry reader.")
                 .layoutPriority(1)
