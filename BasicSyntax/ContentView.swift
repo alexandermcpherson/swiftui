@@ -13,33 +13,40 @@ struct ContentView: View {
         VStack(spacing: 20) {
             Text("Button")
                 .font(.largeTitle)
-            Text("Text Composition")
+            Text("With Backgrounds")
+                .font(.title)
                 .foregroundColor(.gray)
-            Text("You can add more than one text view to a button. By default, the views are composed within an HStack")
-                .frame(maxWidth:.infinity)
+            Text("As with most views, we can also customize the background and add a shadow.")
+                .frame(maxWidth: .infinity)
                 .padding()
                 .background(Color.purple)
                 .foregroundColor(.white)
                 .font(.title)
 
-            Button(action: {}, label: {
-                Text("Forgot Password")
-                Text("Tap to Recover").foregroundColor(.orange)
-            })
+            Button(action: {}) {
+                Text("Solid Button")
+                    .padding()
+                    .foregroundColor(.white)
+                    .background(Color.purple)
+                    .cornerRadius(8)
+            }
 
-            Text("User a VStack")
-                .frame(maxWidth: .infinity)
-                .padding()
-                .background(Color.purple)
-                .foregroundColor(.white)
+            Button(action: {}) {
+                Text("Button with shadow")
+                    .padding(12)
+                    .foregroundColor(.white)
+                    .background(Color.purple)
+                    .cornerRadius(8)
+            }
+            .shadow(color: .purple, radius: 20, y: 5)
 
-            Button(action: {}, label: {
-                VStack {
-                    Text("New User")
-                    Text("Register Here")
-                        .font(.body)
-                }
-            })
+            Button(action: {}) {
+                Text("Button with rounded ends")
+                    .padding(EdgeInsets(top: 12, leading: 20, bottom: 12, trailing: 20))
+                    .foregroundColor(.white)
+                    .background(Color.purple)
+                    .cornerRadius(.infinity)
+            }
         }
     }
 }
