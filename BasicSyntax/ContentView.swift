@@ -13,10 +13,10 @@ struct ContentView: View {
         VStack(spacing: 20) {
             Text("Button")
                 .font(.largeTitle)
-            Text("With Backgrounds")
+            Text("With Borders")
                 .font(.title)
                 .foregroundColor(.gray)
-            Text("As with most views, we can also customize the background and add a shadow.")
+            Text("Apply borders can add a nice effect to your buttons. Here are some options.")
                 .frame(maxWidth: .infinity)
                 .padding()
                 .background(Color.purple)
@@ -24,28 +24,29 @@ struct ContentView: View {
                 .font(.title)
 
             Button(action: {}) {
-                Text("Solid Button")
+                Text("Square Border Button")
+                .padding()
+                .border(Color.purple)
+            }
+
+            Button(action:{}) {
+                Text("Rounded border Button")
+                .padding()
+                .border(Color.purple)
+                .cornerRadius(10)
+            }
+
+            Text("Look what happened when I tried to add a corner radius to the border. It is clipping the corners. Here is a different way you can accomplist this:")
+                .frame(maxWidth: .infinity)
+                .padding()
+                .foregroundColor(.white)
+                .background(Color.purple)
+                .font(.title)
+
+            Button(action: {}) {
+                Text("Border Button")
                     .padding()
-                    .foregroundColor(.white)
-                    .background(Color.purple)
-                    .cornerRadius(8)
-            }
-
-            Button(action: {}) {
-                Text("Button with shadow")
-                    .padding(12)
-                    .foregroundColor(.white)
-                    .background(Color.purple)
-                    .cornerRadius(8)
-            }
-            .shadow(color: .purple, radius: 20, y: 5)
-
-            Button(action: {}) {
-                Text("Button with rounded ends")
-                    .padding(EdgeInsets(top: 12, leading: 20, bottom: 12, trailing: 20))
-                    .foregroundColor(.white)
-                    .background(Color.purple)
-                    .cornerRadius(.infinity)
+                    .background(RoundedRectangle(cornerRadius: 10).stroke(Color.purple, lineWidth: 2))
             }
         }
     }
