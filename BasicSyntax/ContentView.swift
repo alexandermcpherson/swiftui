@@ -59,6 +59,17 @@ struct ContentView: View {
                     .resizable()
                     .aspectRatio(contentMode: .fit)
             }
+
+            GeometryReader { geometry in
+                VStack(spacing: 10) {
+                    Text("geometry.safeAreaInsets.leading: \(geometry.safeAreaInsets.leading)")
+                    Text("geometry.safeAreaInsets.trailing: \(geometry.safeAreaInsets.trailing)")
+                    Text("geometry.safeAreaInsets.top: \(geometry.safeAreaInsets.top)")
+                    Text("geometry.safeAreaInsets.bottom: \(geometry.safeAreaInsets.bottom)")
+                }
+            }
+            .foregroundColor(.white)
+            .background(Color.pink)
         }
         .font(.title)
         .padding()
@@ -68,6 +79,6 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
-            .previewDevice("iPad Pro (11-inch)")
+//            .previewDevice("iPad Pro (11-inch)")
     }
 }
