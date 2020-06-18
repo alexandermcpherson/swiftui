@@ -11,68 +11,45 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         VStack(spacing: 20) {
-            Text("GeometryReader").font(.largeTitle)
-            Text("Min Mid Max").foregroundColor(.gray)
-            Text("You can also get the minimum (min), middle (mid), and maximum (max) X and Y coordinate from the geometry reader.")
-                .layoutPriority(1)
-
-            GeometryReader { geometry in
-                VStack(alignment: .leading, spacing: 20) {
-                    Text("Local Coordinate Space")
-                    HStack(spacing: 10) {
-                        Text("MinX: \(Int(geometry.frame(in: .local).minX))")
-                        Spacer()
-                        Text("MidX: \(Int(geometry.frame(in: .local).midX))")
-                        Spacer()
-                        Text("MaxX: \(Int(geometry.frame(in: .local).maxX))")
-                    }
-                    Text("Global Coordinate Space")
-                    HStack(spacing: 10) {
-                        Text("MinX: \(Int(geometry.frame(in: .global).minX))")
-                        Spacer()
-                        Text("MidX: \(Int(geometry.frame(in: .global).midX))")
-                        Spacer()
-                        Text("MaxX: \(Int(geometry.frame(in: .global).maxX))")
-                    }
-                }
-                .padding(.horizontal)
-            }
-            .frame(height: 200)
-            .foregroundColor(.white)
-            .background(Color.pink)
-
-            HStack {
-                GeometryReader { geometry in
-                    VStack(spacing: 10) {
-                        Text("MinX: \(Int(geometry.frame(in: .global).minX))")
-                        Spacer()
-                        Text("MidX: \(Int(geometry.frame(in: .global).midX))")
-                        Spacer()
-                        Text("MaxX: \(Int(geometry.frame(in: .global).maxX))")
-                    }
-                    .padding(.vertical)
-                }
+            Text("Button")
+                .font(.largeTitle)
+            Text("Introduction")
+                .font(.title)
+                .foregroundColor(.gray)
+            Text("If you just want to show the default text style in a button then you can pass a string as the first parameter")
+                .frame(maxWidth: .infinity)
+                .padding()
+                .background(Color.purple)
                 .foregroundColor(.white)
-                .background(Color.pink)
+            
+            Button("Default Button Style") {}
 
-                Image("kb")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
+            Text("You can customize the text shown for a button")
+                .frame(maxWidth: .infinity)
+                .padding()
+                .background(Color.purple)
+                .foregroundColor(.white)
+
+            Button(action: {
+                // Button action code here
+                print("Alex")
+            }) {
+                Text("Headline Font")
+                    .font(.headline)
             }
 
-            GeometryReader { geometry in
-                VStack(spacing: 10) {
-                    Text("geometry.safeAreaInsets.leading: \(geometry.safeAreaInsets.leading)")
-                    Text("geometry.safeAreaInsets.trailing: \(geometry.safeAreaInsets.trailing)")
-                    Text("geometry.safeAreaInsets.top: \(geometry.safeAreaInsets.top)")
-                    Text("geometry.safeAreaInsets.bottom: \(geometry.safeAreaInsets.bottom)")
-                }
+            Divider()
+
+            Button(action: {}) {
+                Text("Foreground Color").foregroundColor(.red)
             }
-            .foregroundColor(.white)
-            .background(Color.pink)
+
+            Divider()
+
+            Button(action: {}) {
+                Text("Thin font weight").fontWeight(.thin)
+            }
         }
-        .font(.title)
-        .padding()
     }
 }
 
