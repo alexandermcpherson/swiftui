@@ -10,36 +10,31 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack(spacing: 20) {
-            Text("Button With Symbol").font(.largeTitle)
-            Text("With SF Symbols").foregroundColor(.gray).font(.title)
-            Text("Buttons can be composed with SF symbols too")
+        VStack(spacing:20) {
+            Text("Button").font(.largeTitle)
+            Text("With Images").font(.title).foregroundColor(.gray)
+            Text("Button work fine with the SF Symbols. But what if you wanted to use a photo? Look what happens")
                 .frame(maxWidth: .infinity)
                 .padding()
-                .background(Color.purple)
                 .foregroundColor(.white)
-                .font(.title)
+                .background(Color.purple)
 
             Button(action: {}) {
-                Image(systemName: "magnifyingglass")
-                Text("Search")
-                    .padding(.horizontal)
+                Image("kb").cornerRadius(40)
             }
-            .padding()
-            .foregroundColor(.white)
-            .background(Color.purple)
-            .cornerRadius(8)
+
+            Text("This is because the image rendering mode is set to \"templates\" by default. This means all non-transparent areas will use the accent color. You need to change the rendering mode to fix this.")
+                .frame(maxWidth: .infinity)
+                .padding()
+                .foregroundColor(.white)
+                .background(Color.purple)
 
             Button(action: {}) {
-                VStack {
-                    Image(systemName: "video.fill")
-                    Text("Record").padding(.horizontal)
-                }
+                Image("kb")
+                    // Change rendering mode to original
+                    .renderingMode(.original)
+                    .cornerRadius(40)
             }
-            .padding()
-            .foregroundColor(.white)
-            .background(Color.purple)
-            .cornerRadius(.infinity)
         }
     }
 }
