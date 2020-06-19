@@ -10,31 +10,34 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack(spacing:20) {
-            Text("Button").font(.largeTitle)
-            Text("With Images").font(.title).foregroundColor(.gray)
-            Text("Button work fine with the SF Symbols. But what if you wanted to use a photo? Look what happens")
-                .frame(maxWidth: .infinity)
-                .padding()
-                .foregroundColor(.white)
-                .background(Color.purple)
-
-            Button(action: {}) {
-                Image("kb").cornerRadius(40)
+        ZStack {
+            VStack(spacing: 40) {
+                Text("Button").font(.largeTitle)
+                Text("Floating").font(.title).foregroundColor(.gray)
+                Text("You can also create floating buttons by using a ZStack so the button is on the top layer, over everything else")
+                    .frame(maxWidth:.infinity)
+                    .padding()
+                    .foregroundColor(.white)
+                    .background(Color.purple)
+                Spacer()
             }
 
-            Text("This is because the image rendering mode is set to \"templates\" by default. This means all non-transparent areas will use the accent color. You need to change the rendering mode to fix this.")
-                .frame(maxWidth: .infinity)
-                .padding()
-                .foregroundColor(.white)
-                .background(Color.purple)
-
-            Button(action: {}) {
-                Image("kb")
-                    // Change rendering mode to original
-                    .renderingMode(.original)
-                    .cornerRadius(40)
+            VStack {
+                Spacer()
+                HStack {
+                    Spacer()
+                    Button(action: {}) {
+                        Image(systemName: "plus")
+                            .font(.title)
+                    }
+                    .padding(20)
+                    .foregroundColor(Color.white)
+                    .background(Color.purple)
+                    .cornerRadius(.infinity)
+                }
+                .padding(.trailing, 30)
             }
+            .padding(.bottom)
         }
     }
 }
