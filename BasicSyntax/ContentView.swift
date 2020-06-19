@@ -11,12 +11,9 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         VStack(spacing: 20) {
-            Text("Button")
-                .font(.largeTitle)
-            Text("With Borders")
-                .font(.title)
-                .foregroundColor(.gray)
-            Text("Apply borders can add a nice effect to your buttons. Here are some options.")
+            Text("Button With Symbol").font(.largeTitle)
+            Text("With SF Symbols").foregroundColor(.gray).font(.title)
+            Text("Buttons can be composed with SF symbols too")
                 .frame(maxWidth: .infinity)
                 .padding()
                 .background(Color.purple)
@@ -24,30 +21,25 @@ struct ContentView: View {
                 .font(.title)
 
             Button(action: {}) {
-                Text("Square Border Button")
-                .padding()
-                .border(Color.purple)
+                Image(systemName: "magnifyingglass")
+                Text("Search")
+                    .padding(.horizontal)
             }
-
-            Button(action:{}) {
-                Text("Rounded border Button")
-                .padding()
-                .border(Color.purple)
-                .cornerRadius(10)
-            }
-
-            Text("Look what happened when I tried to add a corner radius to the border. It is clipping the corners. Here is a different way you can accomplist this:")
-                .frame(maxWidth: .infinity)
-                .padding()
-                .foregroundColor(.white)
-                .background(Color.purple)
-                .font(.title)
+            .padding()
+            .foregroundColor(.white)
+            .background(Color.purple)
+            .cornerRadius(8)
 
             Button(action: {}) {
-                Text("Border Button")
-                    .padding()
-                    .background(RoundedRectangle(cornerRadius: 10).stroke(Color.purple, lineWidth: 2))
+                VStack {
+                    Image(systemName: "video.fill")
+                    Text("Record").padding(.horizontal)
+                }
             }
+            .padding()
+            .foregroundColor(.white)
+            .background(Color.purple)
+            .cornerRadius(.infinity)
         }
     }
 }
