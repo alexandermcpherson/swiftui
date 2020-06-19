@@ -19,6 +19,7 @@ struct ContentView: View {
                     .padding()
                     .foregroundColor(.white)
                     .background(Color.purple)
+                    .font(.title)
                 Spacer()
             }
 
@@ -37,7 +38,6 @@ struct ContentView: View {
                 }
                 .padding(.trailing, 30)
             }
-            .padding(.bottom)
         }
     }
 }
