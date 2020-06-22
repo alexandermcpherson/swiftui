@@ -10,27 +10,28 @@ import SwiftUI
 
 struct ContentView: View {
 
-    @State private var dateInForm = Date()
+    @State private var arrivalDate = Date()
+
+    let fromToday = Calendar.current.date(byAdding: .minute, value: -1, to: Date())!
+
+    let mainColor = Color("AccentColorDark") // This is set in teh asset catalogue didnt know we could do this.
 
     var body: some View {
-        Form {
-            Section(header:Text("DatePicker").font(.largeTitle).padding())
-            {
-                Text("Used in forms").font(.title)
-                    .foregroundColor(.gray)
-                    .padding()
+        VStack(spacing: 20) {
+            Text("DatePicker").font(.largeTitle)
+            Text("From Date or Time").foregroundColor(.gray)
+            Text("You can set a starting date or tome with the date picker").frame(maxWidth: .infinity).padding().background(mainColor).foregroundColor(.white)
+            Image("kb")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+            Text("Arrival Date")
+            DatePicker("", selection: $arrivalDate, in: fromToday...,
+            displayedComponents: .date) .padding(.horizontal, 28)
+            .background(RoundedRectangle(cornerRadius: 10).foregroundColor(mainColor))
+            .padding(.horizontal)
+            .labelsHidden()
 
-                Text("The date picker looks different when used in a form. The first parameter called 'title' is used when in forms and lists.")
-                    .frame(maxWidth: .infinity)
-                    .padding()
-                    .listRowBackground(Color.yellow)
-                    .font(.title)
-
-                DatePicker("DatePicker collapsed (Default)", selection: $dateInForm, displayedComponents: .date)
-
-                DatePicker("DatePicker Expanded (Selected)", selection: $dateInForm, displayedComponents: .date)
-            }
-        }
+        }.font(.title)
     }
 }
 
