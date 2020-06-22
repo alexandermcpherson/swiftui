@@ -10,30 +10,26 @@ import SwiftUI
 
 struct ContentView: View {
 
-    @State private var todaysDate = Date()
+    @State private var justTime = Date()
+    @State private var theDateAndTime = Date()
 
     var body: some View {
         VStack(spacing: 20) {
             Text("DatePicker").font(.largeTitle)
-            Text("Your own title")
+            Text("Displayed Components")
                 .foregroundColor(.gray)
-            Text("Even when you add your own title, you still have the problem with the date picker indenting")
+            Text("Shoe date and time parts with displayedComponents.")
                 .frame(maxWidth: .infinity)
                 .padding()
                 .background(Color.yellow)
 
-            VStack(spacing: 10) {
-                Text("Todays date")
-                    .font(.title)
-                DatePicker("", selection: $todaysDate, displayedComponents: .date)
+            DatePicker("", selection: $justTime, displayedComponents: .hourAndMinute)
+
+            DatePicker("", selection: $theDateAndTime, displayedComponents: [.date, .hourAndMinute])
+
             }
-
-            Text("How can you previent the indenting")
-                .frame(maxWidth: .infinity)
-                .padding()
-                .background(Color.yellow)
-        }
         .font(.title)
+        .labelsHidden() // Notice I can add this modifier to the parent to be applied to the children
     }
 }
 
