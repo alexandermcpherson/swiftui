@@ -15,9 +15,9 @@ struct ContentView: View {
     var body: some View {
         VStack(spacing: 20) {
             Text("DatePicker").font(.largeTitle)
-            Text("Introduction")
+            Text("Title")
                 .foregroundColor(.gray)
-            Text("Bind a date variable to get and set the date in the date picker")
+            Text("You can provide an optional title for pickers.")
                 .frame(maxWidth: .infinity)
                 .padding()
                 .background(Color.yellow)
@@ -34,14 +34,14 @@ struct ContentView: View {
             }
             .foregroundColor(Color.yellow)
 
-            DatePicker("", selection: $todaysDate, displayedComponents: .date)
+            DatePicker("Date", selection: $todaysDate, displayedComponents: .date).padding(.horizontal)
 
-            Text("Notice the indent of the picker.")
+            Text("This doesnt really look good. So you might want to add your own title.")
                 .frame(maxWidth: .infinity)
                 .padding()
                 .background(Color.yellow)
+                .font(.title)
         }
-        .font(.title)
     }
 }
 
