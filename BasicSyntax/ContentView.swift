@@ -15,33 +15,25 @@ struct ContentView: View {
     var body: some View {
         VStack(spacing: 20) {
             Text("DatePicker").font(.largeTitle)
-            Text("Title")
+            Text("Your own title")
                 .foregroundColor(.gray)
-            Text("You can provide an optional title for pickers.")
+            Text("Even when you add your own title, you still have the problem with the date picker indenting")
                 .frame(maxWidth: .infinity)
                 .padding()
                 .background(Color.yellow)
-                .foregroundColor(.white)
 
-            HStack {
-                Spacer()
-                Image(systemName: "moon.circle")
-                Spacer()
-                Circle().frame(width: 60, height: 60)
-                Spacer()
-                Image(systemName: "moon.circle.fill")
-                Spacer()
+            VStack(spacing: 10) {
+                Text("Todays date")
+                    .font(.title)
+                DatePicker("", selection: $todaysDate, displayedComponents: .date)
             }
-            .foregroundColor(Color.yellow)
 
-            DatePicker("Date", selection: $todaysDate, displayedComponents: .date).padding(.horizontal)
-
-            Text("This doesnt really look good. So you might want to add your own title.")
+            Text("How can you previent the indenting")
                 .frame(maxWidth: .infinity)
                 .padding()
                 .background(Color.yellow)
-                .font(.title)
         }
+        .font(.title)
     }
 }
 
