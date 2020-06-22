@@ -10,26 +10,27 @@ import SwiftUI
 
 struct ContentView: View {
 
-    @State private var justTime = Date()
-    @State private var theDateAndTime = Date()
+    @State private var dateInForm = Date()
 
     var body: some View {
-        VStack(spacing: 20) {
-            Text("DatePicker").font(.largeTitle)
-            Text("Displayed Components")
-                .foregroundColor(.gray)
-            Text("Shoe date and time parts with displayedComponents.")
-                .frame(maxWidth: .infinity)
-                .padding()
-                .background(Color.yellow)
+        Form {
+            Section(header:Text("DatePicker").font(.largeTitle).padding())
+            {
+                Text("Used in forms").font(.title)
+                    .foregroundColor(.gray)
+                    .padding()
 
-            DatePicker("", selection: $justTime, displayedComponents: .hourAndMinute)
+                Text("The date picker looks different when used in a form. The first parameter called 'title' is used when in forms and lists.")
+                    .frame(maxWidth: .infinity)
+                    .padding()
+                    .listRowBackground(Color.yellow)
+                    .font(.title)
 
-            DatePicker("", selection: $theDateAndTime, displayedComponents: [.date, .hourAndMinute])
+                DatePicker("DatePicker collapsed (Default)", selection: $dateInForm, displayedComponents: .date)
 
+                DatePicker("DatePicker Expanded (Selected)", selection: $dateInForm, displayedComponents: .date)
             }
-        .font(.title)
-        .labelsHidden() // Notice I can add this modifier to the parent to be applied to the children
+        }
     }
 }
 
