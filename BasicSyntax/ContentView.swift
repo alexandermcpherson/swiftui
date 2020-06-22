@@ -9,36 +9,39 @@
 import SwiftUI
 
 struct ContentView: View {
-    var body: some View {
-        ZStack {
-            VStack(spacing: 40) {
-                Text("Button").font(.largeTitle)
-                Text("Floating").font(.title).foregroundColor(.gray)
-                Text("You can also create floating buttons by using a ZStack so the button is on the top layer, over everything else")
-                    .frame(maxWidth:.infinity)
-                    .padding()
-                    .foregroundColor(.white)
-                    .background(Color.purple)
-                    .font(.title)
-                Spacer()
-            }
 
-            VStack {
+    @State private var todaysDate = Date()
+
+    var body: some View {
+        VStack(spacing: 20) {
+            Text("DatePicker").font(.largeTitle)
+            Text("Introduction")
+                .foregroundColor(.gray)
+            Text("Bind a date variable to get and set the date in the date picker")
+                .frame(maxWidth: .infinity)
+                .padding()
+                .background(Color.yellow)
+                .foregroundColor(.white)
+
+            HStack {
                 Spacer()
-                HStack {
-                    Spacer()
-                    Button(action: {}) {
-                        Image(systemName: "plus")
-                            .font(.title)
-                    }
-                    .padding(20)
-                    .foregroundColor(Color.white)
-                    .background(Color.purple)
-                    .cornerRadius(.infinity)
-                }
-                .padding(.trailing, 30)
+                Image(systemName: "moon.circle")
+                Spacer()
+                Circle().frame(width: 60, height: 60)
+                Spacer()
+                Image(systemName: "moon.circle.fill")
+                Spacer()
             }
+            .foregroundColor(Color.yellow)
+
+            DatePicker("", selection: $todaysDate, displayedComponents: .date)
+
+            Text("Notice the indent of the picker.")
+                .frame(maxWidth: .infinity)
+                .padding()
+                .background(Color.yellow)
         }
+        .font(.title)
     }
 }
 
