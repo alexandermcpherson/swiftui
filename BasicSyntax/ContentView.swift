@@ -11,24 +11,33 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         Form {
-            Section {
-                Text("This is a form!").font(.title)
-                Text("You can put any content in here")
-                Text("The cells will grow to fit the content")
-                Text("Remeber, its just views inside of views")
+            Section(header: Text("Section Header Text")) {
+                Text("You can add any view in a section header")
+                Text("Notice the default foreground color is gray")
             }
 
-            Section {
-                Text("Limitations").font(.title)
-                Text("There are built-in margin that are difficult to get around. Take a look at the color below so you can see where the margins are:")
-                Color.purple
+            Section(header: SectionHeaderTextAndImage(name: "People", image: "person.2.square.stack.fill")) {
+                Text("Here's an example of a section header with image and text")
             }
 
-            Section {
-                Text("Summary").font(.title)
-                Text("Pretty much what you see here is what you get.")
+            Section(header: Text(""), footer: Text("Total: $5,600.00").bold()) {
+                Text("Here is an example of a section footer")
             }
         }
+    }
+}
+
+struct SectionHeaderTextAndImage: View {
+    var name: String
+    var image: String
+    var body: some View {
+        HStack{
+            Image(systemName: image).padding(.trailing)
+            Text(name)
+        }
+        .padding()
+        .font(.title)
+        .foregroundColor(.purple)
     }
 }
 
