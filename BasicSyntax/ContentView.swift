@@ -11,33 +11,30 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         Form {
-            Section(header: Text("Section Header Text")) {
-                Text("You can add any view in a section header")
-                Text("Notice the default foreground color is gray")
+            Section(header: Text("Form").font(.largeTitle)) {
+                Text("List Row Background")
+                    .foregroundColor(.gray)
+                Text("Forms and Lists allow you to set a background view with a function called \"listRowBackground(view:)\".")
+                    .fixedSize(horizontal: false, vertical:  true) // Using fixed size is another way to get text not to truncate.
+                Text("You can call this modifier function on just on row, like hits.")
+                    .listRowBackground(Color.purple)
+                    .foregroundColor(.white)
             }
 
-            Section(header: SectionHeaderTextAndImage(name: "People", image: "person.2.square.stack.fill")) {
-                Text("Here's an example of a section header with image and text")
-            }
+            Section(header: Text("Whole Section")
+                .foregroundColor(.gray)) {
+                Text("Or you can set a view or color for a whole section.")
 
-            Section(header: Text(""), footer: Text("Total: $5,600.00").bold()) {
-                Text("Here is an example of a section footer")
+                Image(systemName: "smiley.fill")
+                    .frame(maxWidth: .infinity, alignment: .center)
+                    .font(.largeTitle)
+
+                    Text("Note, even though the color is set on the Section, the color of the section header is not effected").fixedSize(horizontal: false, vertical: true)
             }
+            .foregroundColor(.white)
+            .listRowBackground(Color.purple)
         }
-    }
-}
-
-struct SectionHeaderTextAndImage: View {
-    var name: String
-    var image: String
-    var body: some View {
-        HStack{
-            Image(systemName: image).padding(.trailing)
-            Text(name)
-        }
-        .padding()
         .font(.title)
-        .foregroundColor(.purple)
     }
 }
 
