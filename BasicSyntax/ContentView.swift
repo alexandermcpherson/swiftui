@@ -10,36 +10,34 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack(spacing: 10) {
-            Text("Geometry Reader").font(.largeTitle)
-            Text("Getting Coordinates").foregroundColor(.gray)
-            Text("Getting the coordinates (x, y) of a geometry view is little different. Take a look at this example:")
-
-            GeometryReader { geometry in
-                VStack(spacing:10) {
-                    Text("X: \(geometry.frame(in: .local).origin.x)")
-                    Text("Y: \(geometry.frame(in: .local).origin.y)")
-                }
-                .foregroundColor(.white)
+        Form {
+            Section(header: Text("Section Header Text")) {
+                Text("You can add any view in a section header")
+                Text("Notice the default foreground is gray")
             }
-            .background(Color.pink)
-
-            Text("The local coordinate space will always give you zeros.")
-            Text("You need to look globally to get the coordinates inside the current view:")
-
-            GeometryReader { geomtry in
-                VStack(spacing:10) {
-                    Text("X: \(geomtry.frame(in: .global).origin.x)")
-                    Text("Y: \(geomtry.frame(in: .global).origin.y)")
-                }
-                .foregroundColor(.white)
+            Section(header: SectionTextAndImage(name: "People", image: "person.2.square.stack.fill")) {
+                Text("Here is an example of a section header with image and text")
             }
-            .background(Color.pink)
-            .frame(height: 200)
-
+            Section(header: Text(""), footer: Text("Total: $5,600.00").bold()) {
+                Text("Here is an example of section footer")
+            }
         }
+    }
+}
+
+struct SectionTextAndImage: View {
+
+    var name: String
+    var image: String
+
+    var body: some View {
+        HStack {
+            Image(systemName: image)
+            Text(name)
+        }
+        .padding()
         .font(.title)
-        .padding(.horizontal)
+        .foregroundColor(Color.purple)
     }
 }
 
