@@ -11,33 +11,30 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         Form {
-            Section(header: Text("Section Header Text")) {
-                Text("You can add any view in a section header")
-                Text("Notice the default foreground is gray")
+            Section(header: Text("Form").font(.largeTitle)) {
+                Text("List row background")
+                    .foregroundColor(.gray)
+
+                Text("Forms and lists allow you to set a background view with a function called \"listRowBackground(view:)\".").fixedSize(horizontal: false, vertical: true)
+                // Using fixed size is another way to stop text truncating
+
+                Text("You can call this function modifier function on just one row, like this")
+                    .listRowBackground(Color.purple)
+                    .foregroundColor(.white)
             }
-            Section(header: SectionTextAndImage(name: "People", image: "person.2.square.stack.fill")) {
-                Text("Here is an example of a section header with image and text")
+
+            Section(header: Text("Whole Section").font(.title).foregroundColor(.gray)) {
+                Text("Or you can set a view or colour for a whole section")
+                Image(systemName: "smiley.fill")
+                    .frame(maxWidth: .infinity, alignment: .center)
+                    .font(.largeTitle)
+                Text("Note that even though the colour is set to the section, the colour of the seciton header is not affected").fixedSize(horizontal: false, vertical: true)
+
             }
-            Section(header: Text(""), footer: Text("Total: $5,600.00").bold()) {
-                Text("Here is an example of section footer")
-            }
+            .foregroundColor(.white)
+            .listRowBackground(Color.purple)
         }
-    }
-}
-
-struct SectionTextAndImage: View {
-
-    var name: String
-    var image: String
-
-    var body: some View {
-        HStack {
-            Image(systemName: image)
-            Text(name)
-        }
-        .padding()
         .font(.title)
-        .foregroundColor(Color.purple)
     }
 }
 
