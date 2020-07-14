@@ -11,30 +11,19 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         Form {
-            Section(header: Text("Form").font(.largeTitle)) {
-                Text("List row background")
-                    .foregroundColor(.gray)
-
-                Text("Forms and lists allow you to set a background view with a function called \"listRowBackground(view:)\".").fixedSize(horizontal: false, vertical: true)
-                // Using fixed size is another way to stop text truncating
-
-                Text("You can call this function modifier function on just one row, like this")
-                    .listRowBackground(Color.purple)
+            Section(header: Text("Form").font(.largeTitle).bold().foregroundColor(.white)) {
+                Text("List row background").font(.title).foregroundColor(.gray)
+                Text("Images work a little different as you can see here")
+                Text("The image is actually set on the row of the second image")
+            }
+            Section(header: Text("Images").font(.title).foregroundColor(.white)) {
+                Text("A image is set as a background for the row below. This works fine for rows, but when you use an image on the section level, it is repeated for all rows.")
+                Text("The images is set on this row, but it extends past the bounds. It also hidest he row below this one and goes under the previous row.")
                     .foregroundColor(.white)
+                    .listRowBackground(Image("bs").resizable().clipped().blur(radius: 3))
+                Text("This row cannot be seen if we use a larger image or remove the .resizable modifier")
             }
-
-            Section(header: Text("Whole Section").font(.title).foregroundColor(.gray)) {
-                Text("Or you can set a view or colour for a whole section")
-                Image(systemName: "smiley.fill")
-                    .frame(maxWidth: .infinity, alignment: .center)
-                    .font(.largeTitle)
-                Text("Note that even though the colour is set to the section, the colour of the seciton header is not affected").fixedSize(horizontal: false, vertical: true)
-
-            }
-            .foregroundColor(.white)
-            .listRowBackground(Color.purple)
         }
-        .font(.title)
     }
 }
 
